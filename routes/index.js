@@ -52,8 +52,8 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).find('h3').text().toLowerCase().includes(word))) {
             const title = $(story).find('h3').text()
             const url = $(story).attr('href')
-            // console.log({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug })
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug })
+            const imageUrl = ''
+            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
 
           }
         })
@@ -70,8 +70,8 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).find('h2').text().toLowerCase().includes(word))) {
             const title = $(story).find('h2').text()
             const url = $(story).attr('href')
-            // console.log({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug })
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug })
+            const imageUrl = ''
+            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
           }
         })
       })
@@ -87,8 +87,8 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
             const title = $(story).text()
             const url = $(story).attr('href')
-            // console.log({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug })
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug })
+            const imageUrl = ''
+            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
           }
         })
       })
@@ -104,8 +104,8 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
             const title = $(story).text()
             const url = $(story).attr('href')
-            // console.log({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug })
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug })
+            const imageUrl = ''
+            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
           }
         })
       })
@@ -117,7 +117,6 @@ router.get('/blakbonz', (req, res) => { res.json('Welcome to the US Congress New
 
 router.get('/news', (req, res) => {
   console.log(storyList)
-  // console.log(storySet)
 
   res.json(storyList)
 })
