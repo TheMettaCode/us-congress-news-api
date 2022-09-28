@@ -46,14 +46,15 @@ publishers.forEach(publisher => {
       .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
-        const stories = $('a')
+        const stories = $('.story-headline')
 
         stories.each((index, story) => {
-          if (keywords.find((word) => $(story).find('h3').text().toLowerCase().includes(word))) {
-            const title = $(story).find('h3').text()
-            const url = $(story).attr('href')
+          if (keywords.find((word) => $(story).find('a').find('h3').text().toLowerCase().includes(word))) {
+            const title = $(story).find('a').find('h3').text()
+            const url = $(story).find('a').attr('href')
             const imageUrl = ''
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
+            const date = $(story).find('span').last().text()
+            storyList.push({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
 
           }
         })
@@ -64,14 +65,15 @@ publishers.forEach(publisher => {
       .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
-        const stories = $('a')
+        const stories = $('li')
 
         stories.each((index, story) => {
-          if (keywords.find((word) => $(story).find('h2').text().toLowerCase().includes(word))) {
-            const title = $(story).find('h2').text()
-            const url = $(story).attr('href')
-            const imageUrl = ''
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
+          if (keywords.find((word) => $(story).find('a').find('h2').text().toLowerCase().includes(word))) {
+            const title = $(story).find('a').find('h2').text()
+            const url = $(story).find('a').attr('href')
+            const imageUrl = $(story).find('a').find('img').attr('src')
+            const date = ''
+            storyList.push({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
           }
         })
       })
@@ -88,7 +90,8 @@ publishers.forEach(publisher => {
             const title = $(story).text()
             const url = $(story).attr('href')
             const imageUrl = ''
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
+            const date = ''
+            storyList.push({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
           }
         })
       })
@@ -105,7 +108,8 @@ publishers.forEach(publisher => {
             const title = $(story).text()
             const url = $(story).attr('href')
             const imageUrl = ''
-            storyList.push({ title, url, source: publisher.name, slug: publisher.slug, imageUrl })
+            const date = ''
+            storyList.push({ title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
           }
         })
       })
