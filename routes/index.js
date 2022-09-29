@@ -9,12 +9,12 @@ const app = express();
 const router = express.Router();
 
 const publishers = [
-  {
-    name: 'US News',
-    address: 'https://www.usnews.com/topics/subjects/congress',
-    base: '',
-    slug: 'usnews'
-  },
+  // {
+  //   name: 'US News',
+  //   address: 'https://www.usnews.com/topics/subjects/congress',
+  //   base: '',
+  //   slug: 'usnews'
+  // },
   {
     name: 'The Washington Post | Politics',
     address: 'https://www.washingtonpost.com/politics/',
