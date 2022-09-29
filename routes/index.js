@@ -41,7 +41,7 @@ const publishers = [
   }
 ]
 
-const keywords = ["election", "us congress", "capitol", "capitol hill", "gop", "dems", "republicans", "democrats", "senate", "house of representatives", "white house", "stock", "investing", "tax"]
+const keywords = ["election", "us congress", "capitol", "capitol hill", "gop", "dems", "republicans", "democrats", "senate", "house of representatives", "speaker of the house", "stock", "investing", "tax", "majority leader", "minority leader", "filibuster", "constitution"]
 
 const storyList = []
 
