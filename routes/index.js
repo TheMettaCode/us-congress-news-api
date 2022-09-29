@@ -71,7 +71,7 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).find('a').find('h2').text().toLowerCase().includes(word))) {
             const title = $(story).find('a').find('h2').text()
             const url = $(story).find('a').attr('href')
-            const imageUrl = $(story).find('a').find('img').attr('src')
+            const imageUrl = $(story).find('a').find('img').attr('src').split('?')[0]
             const date = ''
             storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
           }
