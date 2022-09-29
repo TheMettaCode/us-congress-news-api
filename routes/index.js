@@ -60,7 +60,7 @@ publishers.forEach(publisher => {
             const url = $(story).find('a').attr('href')
             const imageUrl = ''
             const date = ''
-            storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
+            if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
           }
         })
@@ -79,7 +79,7 @@ publishers.forEach(publisher => {
             const url = $(story).find('a').attr('href')
             const imageUrl = ''
             const date = $(story).find('span').last().text()
-            storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
+            if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
           }
         })
@@ -98,7 +98,7 @@ publishers.forEach(publisher => {
             const url = $(story).find('a').attr('href')
             const imageUrl = $(story).find('a').find('img').attr('src').split('?')[0]
             const date = ''
-            storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
+            if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
         })
       })
@@ -116,7 +116,7 @@ publishers.forEach(publisher => {
             const url = $(story).attr('href')
             const imageUrl = ''
             const date = ''
-            storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
+            if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
         })
       })
@@ -134,7 +134,7 @@ publishers.forEach(publisher => {
             const url = $(story).attr('href')
             const imageUrl = ''
             const date = ''
-            storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date })
+            if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
         })
       })
