@@ -9,12 +9,12 @@ const app = express();
 const router = express.Router();
 
 const publishers = [
-  // {
-  //   name: 'US News',
-  //   address: 'https://www.usnews.com/',
-  //   base: '',
-  //   slug: 'usnews'
-  // },
+  {
+    name: 'Propublica | Politics',
+    address: 'https://www.propublica.org/topics/politics',
+    base: '',
+    slug: 'propublica'
+  },
   {
     name: 'The Washington Post | Politics',
     address: 'https://www.washingtonpost.com/politics/',
@@ -41,24 +41,24 @@ const publishers = [
   }
 ]
 
-const keywords = ["election", "us congress", "capitol", "capitol hill", "gop", "dems", "republicans", "democrats", "senate", "house of representatives", "speaker of the house", "stock", "investing", "tax", "majority leader", "minority leader", "filibuster", "constitution"]
+const keywords = ["election", "us congress", "capitol", "capitol hill", "gop", "dems", "republicans", "democrats", "senate", "house of representatives", "speaker of the house", "stock", "investing", "tax", "majority leader", "minority leader", "filibuster", "constitution", "vote"]
 
 const storyList = []
 
 publishers.forEach(publisher => {
-  if (publisher.slug == 'usnews') {
+  if (publisher.slug == 'propublica') {
     console.log(publisher.name)
     axios.get(publisher.address)
       .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
-        const stories = $('h3')
+        const stories = $('.story-entry')
 
         stories.each((index, story) => {
-          if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
-            const title = $(story).text()
-            const url = $(story).find('a').attr('href')
-            const imageUrl = ''
+          if (keywords.find((word) => $(story).find('h4').text().toLowerCase().includes(word))) {
+            const title = $(story).find('h4').text()
+            const url = $(story).find('h4').find('a').attr('href')
+            const imageUrl = `${$(story).find('img').attr('srcset')}`.split('?')[0] || ''
             const date = ''
             if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
@@ -71,13 +71,13 @@ publishers.forEach(publisher => {
       .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
-        const stories = $('.story-headline')
+        const stories = $('article div .w-100')
 
         stories.each((index, story) => {
-          if (keywords.find((word) => $(story).find('a').find('h3').text().toLowerCase().includes(word))) {
-            const title = $(story).find('a').find('h3').text()
-            const url = $(story).find('a').attr('href')
-            const imageUrl = ''
+          if (keywords.find((word) => $(story).find('.story-headline').find('h3').text().toLowerCase().includes(word))) {
+            const title = $(story).find('.story-headline').find('h3').text()
+            const url = $(story).find('div a').last().attr('href')
+            const imageUrl = $(story).find('.border-box').find('img').attr('href') || ''
             const date = $(story).find('span').last().text()
             if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
@@ -96,7 +96,7 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).find('a').find('h2').text().toLowerCase().includes(word))) {
             const title = $(story).find('a').find('h2').text()
             const url = $(story).find('a').attr('href')
-            const imageUrl = $(story).find('a').find('img').attr('src').split('?')[0]
+            const imageUrl = $(story).find('a').find('img').attr('src').split('?')[0] || ''
             const date = ''
             if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
@@ -108,14 +108,14 @@ publishers.forEach(publisher => {
       .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
-        const stories = $('a')
+        const stories = $('article')
 
         stories.each((index, story) => {
-          if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
-            const title = $(story).text()
-            const url = $(story).attr('href')
-            const imageUrl = ''
-            const date = ''
+          if (keywords.find((word) => $(story).find('h2').text().toLowerCase().includes(word))) {
+            const title = $(story).find('h2').text()
+            const url = $(story).find('a').attr('href')
+            const imageUrl = $(story).find('img').attr('src').split('?')[0] || ''
+            const date = $(story).find('p').last().text()
             if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
         })
@@ -132,7 +132,7 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
             const title = $(story).text()
             const url = $(story).attr('href')
-            const imageUrl = ''
+            const imageUrl = '' ?? ''
             const date = ''
             if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
