@@ -52,7 +52,7 @@ publishers.forEach(publisher => {
       .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
-        const stories = $('.home__story')
+        const stories = $('.home__river .home__story')
 
         stories.each((index, story) => {
           if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
@@ -77,7 +77,7 @@ publishers.forEach(publisher => {
           if (keywords.find((word) => $(story).find('.story-headline').find('h3').text().toLowerCase().includes(word))) {
             const title = $(story).find('.story-headline').find('h3').text()
             const url = $(story).find('div a').last().attr('href')
-            const imageUrl = $(story).find('.border-box').find('img').attr('href') || ''
+            const imageUrl = `${$(story).find('.border-box').find('a').attr('src')}`.split('?src=')[1] || ''
             const date = $(story).find('span').last().text()
             if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
