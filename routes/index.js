@@ -10,8 +10,8 @@ const router = express.Router();
 
 const publishers = [
   {
-    name: 'Propublica | Politics',
-    address: 'https://www.propublica.org/topics/politics',
+    name: 'Propublica',
+    address: 'https://www.propublica.org/',
     base: '',
     slug: 'propublica'
   },
@@ -52,14 +52,14 @@ publishers.forEach(publisher => {
       .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
-        const stories = $('.story-entry')
+        const stories = $('.home__story')
 
         stories.each((index, story) => {
-          if (keywords.find((word) => $(story).find('h4').text().toLowerCase().includes(word))) {
-            const title = $(story).find('h4').text()
-            const url = $(story).find('h4').find('a').attr('href')
-            const imageUrl = `${$(story).find('img').attr('srcset')}`.split('?')[0] || ''
-            const date = ''
+          if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
+            const title = $(story).find('.home__story-description').find('h3').text()
+            const url = $(story).find('h3').find('a').attr('href')
+            const imageUrl = `${$(story).find('.lead-art').find('img').attr('srcset')}`.split('?')[0] || ''
+            const date = $(story).find('p').last().find('time').text()
             if (title.split(' ').length > 4) { storyList.push({ index, title, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
           }
