@@ -10,6 +10,18 @@ const router = express.Router();
 
 const publishers = [
   {
+    name: 'AP News | Politics',
+    address: 'https://apnews.com/hub/politics',
+    base: 'https://www.apnews.com',
+    slug: 'apnews'
+  },
+  {
+    name: 'USA Today | Politics',
+    address: 'https://www.usatoday.com/news/politics/',
+    base: 'https://www.usatoday.com',
+    slug: 'usatoday'
+  },
+  {
     name: 'Propublica',
     address: 'https://www.propublica.org/',
     base: '',
@@ -46,7 +58,48 @@ const keywords = ["election", "us congress", "capitol", "capitol hill", "gop", "
 const storyList = []
 
 publishers.forEach(publisher => {
-  if (publisher.slug == 'propublica') {
+  if (publisher.slug == 'apnews') {
+    console.log(publisher.name)
+    axios.get(publisher.address)
+      .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const stories = $('.FeedCard')
+
+        stories.each((index, story) => {
+          if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
+            const title = $(story).find('.CardHeadline').text().trim()
+            const shortDescription = $(story).find('p').text().trim()
+            const url = $(story).find('a').attr('href')
+            const imageUrl = $(story).find('img').attr('src') || ''
+            const date = ''
+            if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
+
+          }
+        })
+      })
+  } else if (publisher.slug == 'usatoday') {
+    console.log(publisher.name)
+    axios.get(publisher.address)
+      .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const stories = $('.gnt_m a')
+
+        stories.each((index, story) => {
+          if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
+            const title = $(story).text().trim()
+            const shortDescription = $(story).attr('data-c-br')
+            const url = $(story).attr('href')
+            const imageUrl = "" // `${$(story).find('img').attr('srcset')}`.split('?')[0] || ''
+            const date = $(story).find('div').last().attr('data-c-dt')
+            if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
+
+          }
+        })
+      })
+  }
+  else if (publisher.slug == 'propublica') {
     console.log(publisher.name)
     axios.get(publisher.address)
       .then(response => {
