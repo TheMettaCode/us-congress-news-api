@@ -68,7 +68,7 @@ publishers.forEach(publisher => {
 
         stories.each((index, story) => {
           if (keywords.find((word) => $(story).text().toLowerCase().includes(word))) {
-            const title = $(story).find('.CardHeadline').text().trim()
+            const title = $(story).find('.CardHeadline').find('a').text().trim()
             const shortDescription = $(story).find('p').text().trim()
             const url = $(story).find('a').attr('href')
             const imageUrl = $(story).find('img').attr('src') || ''
