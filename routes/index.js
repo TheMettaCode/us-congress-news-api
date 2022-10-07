@@ -10,13 +10,13 @@ const router = express.Router();
 
 const publishers = [
   {
-    name: 'AP News | Politics',
+    name: 'AP News',
     address: 'https://apnews.com/hub/politics',
     base: 'https://www.apnews.com',
     slug: 'apnews'
   },
   {
-    name: 'USA Today | Politics',
+    name: 'USA Today',
     address: 'https://www.usatoday.com/news/politics/',
     base: 'https://www.usatoday.com',
     slug: 'usatoday'
@@ -28,25 +28,25 @@ const publishers = [
     slug: 'propublica'
   },
   {
-    name: 'The Washington Post | Politics',
+    name: 'The Washington Post',
     address: 'https://www.washingtonpost.com/politics/',
     base: '',
     slug: 'thewashingtonpost'
   },
   {
-    name: 'New York Times | US Congress',
+    name: 'New York Times',
     address: 'https://www.nytimes.com/topic/organization/us-congress',
     base: 'https://www.nytimes.com',
     slug: 'nytimes'
   },
   {
-    name: 'Wall Street Journal | Washington Wire',
+    name: 'Wall Street Journal',
     address: 'https://www.wsj.com/news/types/washington-wire',
     base: '',
     slug: 'wsj'
   },
   {
-    name: 'Politico | Congress',
+    name: 'Politico',
     address: 'https://www.politico.com/congress',
     base: '',
     slug: 'politico'
