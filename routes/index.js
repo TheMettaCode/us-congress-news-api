@@ -5,8 +5,10 @@ var cheerio = require('cheerio')
 var express = require('express');
 const { url } = require('inspector');
 
+
 const app = express();
 const router = express.Router();
+
 
 const publishers = [
   {
@@ -213,4 +215,7 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'US Congress News API' });
 });
 
+
 module.exports = router;
+
+// app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
