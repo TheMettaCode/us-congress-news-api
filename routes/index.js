@@ -1,9 +1,9 @@
-// const PORT = 8000
-var http = require('http')
+const PORT = 8000
+// var http = require('http')
 var axios = require('axios')
 var cheerio = require('cheerio')
 var express = require('express');
-const { url } = require('inspector');
+// const { url } = require('inspector');
 
 
 const app = express();
@@ -218,4 +218,4 @@ router.get('/', function (req, res, next) {
 
 module.exports = router;
 
-// app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
+app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
