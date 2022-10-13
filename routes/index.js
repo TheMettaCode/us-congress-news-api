@@ -29,12 +29,12 @@ const publishers = [
     base: '',
     slug: 'propublica'
   },
-  {
-    name: 'The Washington Post',
-    address: 'https://www.washingtonpost.com/politics/',
-    base: '',
-    slug: 'thewashingtonpost'
-  },
+  // {
+  //   name: 'The Washington Post',
+  //   address: 'https://www.washingtonpost.com/politics/',
+  //   base: '',
+  //   slug: 'thewashingtonpost'
+  // },
   {
     name: 'New York Times',
     address: 'https://www.nytimes.com/topic/organization/us-congress',
