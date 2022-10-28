@@ -41,12 +41,12 @@ const publishers = [
     base: 'https://www.nytimes.com',
     slug: 'nytimes'
   },
-  {
-    name: 'Wall Street Journal',
-    address: 'https://www.wsj.com/news/types/washington-wire',
-    base: '',
-    slug: 'wsj'
-  },
+//  {
+//    name: 'Wall Street Journal',
+//    address: 'https://www.wsj.com/news/types/washington-wire',
+//    base: '',
+//    slug: 'wsj'
+//  },
   {
     name: 'Politico',
     address: 'https://www.politico.com/congress',
@@ -74,7 +74,7 @@ publishers.forEach(publisher => {
             const shortDescription = $(story).find('p').text().trim()
             const url = $(story).find('a').attr('href')
             const imageUrl = $(story).find('img').attr('src') || ''
-            const date = ''
+            const date = $(story).find('span').last().text().split(' GMT')[0]
             if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
           }
@@ -94,7 +94,7 @@ publishers.forEach(publisher => {
             const shortDescription = $(story).attr('data-c-br')
             const url = $(story).attr('href')
             const imageUrl = "" // `${$(story).find('img').attr('srcset')}`.split('?')[0] || ''
-            const date = $(story).find('div').last().attr('data-c-dt')
+            const date = url.match(/(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/)[0] // $(story).find('div').last().attr('data-c-dt')
             if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
           }
@@ -115,7 +115,7 @@ publishers.forEach(publisher => {
             const shortDescription = $(story).find('.home__story-dek').text().trim()
             const url = $(story).find('h3').find('a').attr('href')
             const imageUrl = `${$(story).find('.lead-art').find('img').attr('srcset')}`.split('?')[0] || ''
-            const date = $(story).find('p').last().find('time').text()
+            const date = $(story).find('p').last().find('time').text().split(',')[0]
             if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
 
           }
@@ -155,7 +155,7 @@ publishers.forEach(publisher => {
             const shortDescription = $(story).find('p').text()
             const url = $(story).find('a').attr('href')
             const imageUrl = $(story).find('a').find('img').attr('src').split('?')[0] || ''
-            const date = ''
+            const date = url.match(/(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/)[0]
             if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
         })
@@ -193,7 +193,7 @@ publishers.forEach(publisher => {
             const shortDescription = $(story).find('.subhead').text()
             const url = $(story).find('a').attr('href')
             const imageUrl = $(story).find('.thumb').find('div').find('a').find('img').attr('src') || ""
-            const date = $(story).find('.timestamp').text()
+            const date = url.match(/(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/)[0] // $(story).find('.timestamp').text()
             if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
         })
