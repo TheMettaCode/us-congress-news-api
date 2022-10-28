@@ -1,4 +1,4 @@
-//const PORT = 8000
+var PORT = process.env.PORT || 8080
 // var http = require('http')
 var axios = require('axios')
 var cheerio = require('cheerio')
@@ -154,8 +154,8 @@ publishers.forEach(publisher => {
             const title = $(story).find('a').find('h2').text()
             const shortDescription = $(story).find('p').text()
             const url = $(story).find('a').attr('href')
-            const imageUrl = $(story).find('a').find('img').attr('src').split('?')[0] || ''
-            const date = url.match(/(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/)[0]
+            const imageUrl = $(story).find('a').find('img').attr('src').split('?')[0]
+            const date = imageUrl.match(/(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/)[0]
             if (title.split(' ').length > 4) { storyList.push({ index, title, shortDescription, url: publisher.base + url, source: publisher.name, slug: publisher.slug, imageUrl, date }) }
           }
         })
@@ -218,4 +218,4 @@ router.get('/', function (req, res, next) {
 
 module.exports = router;
 
-//app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
+app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
