@@ -201,7 +201,7 @@ publishers.forEach(publisher => {
   }
 })
 
-router.get('/blakbonz', (req, res) => { res.json('Welcome to the US Congress News API') })
+//router.get('/blakbonz', (req, res) => { res.json('Welcome to the US Congress News API') })
 
 
 router.get('/news', (req, res) => {
