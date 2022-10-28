@@ -1,4 +1,4 @@
-var PORT = process.env.PORT || 8080
+//var PORT = process.env.PORT || 8080
 // var http = require('http')
 var axios = require('axios')
 var cheerio = require('cheerio')
@@ -218,4 +218,4 @@ router.get('/', function (req, res, next) {
 
 module.exports = router;
 
-app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
+//app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
