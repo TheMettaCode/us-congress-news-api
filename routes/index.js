@@ -41,12 +41,12 @@ const publishers = [
     base: 'https://www.nytimes.com',
     slug: 'nytimes'
   },
-//  {
-//    name: 'Wall Street Journal',
-//    address: 'https://www.wsj.com/news/types/washington-wire',
-//    base: '',
-//    slug: 'wsj'
-//  },
+  //  {
+  //    name: 'Wall Street Journal',
+  //    address: 'https://www.wsj.com/news/types/washington-wire',
+  //    base: '',
+  //    slug: 'wsj'
+  //  },
   {
     name: 'Politico',
     address: 'https://www.politico.com/congress',
