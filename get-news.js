@@ -64,6 +64,7 @@ const keywords = [
     "tax",
     "majority leader",
     "minority leader",
+    "midterms",
     "filibuster",
     "constitution",
     "vote",
