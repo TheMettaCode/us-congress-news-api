@@ -20,6 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: node --version
+      - run: npm install axios
+      - run: npm install cheerio
       - name: run-javascript
         run: npm run get-news
       - name: commit-top-news-json
