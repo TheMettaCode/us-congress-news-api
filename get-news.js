@@ -48,26 +48,7 @@ const publishers = [
 ];
 
 const keywords = [
-    "election",
-    "us congress",
-    "capitol",
-    "capitol hill",
-    "gop",
-    "dems",
-    "republicans",
-    "democrats",
-    "senate",
-    "house of representatives",
-    "speaker of the house",
-    "stock",
-    "investing",
-    "tax",
-    "majority leader",
-    "minority leader",
-    "midterms",
-    "filibuster",
-    "constitution",
-    "vote",
+    "amendment", "biden", "ballot", "bill", "congress", "capitol", "capitol hill", "constitution", "dems", "democrats", "election", "filibuster", "gop", "house floor", "house of representatives", "investing", "majority leader", "midterms", "midterm elections", "minority leader", "obama", "omnibus", "republicans", "runoff election", "senate", "senate floor", "speaker of the house", "stock", "tax", "trump", "us congress", "vote", "war", "washington", "dc", "white house"
 ];
 
 const storyList = [];
