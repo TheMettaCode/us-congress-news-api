@@ -39,17 +39,17 @@ const publishers = [
     //    base: '',
     //    slug: 'wsj'
     //  },
-    {
-        name: "Politico",
-        address: "https://www.politico.com/congress",
-        base: "",
-        slug: "politico",
-    },
+    // {
+    //     name: "Politico",
+    //     address: "https://www.politico.com/congress",
+    //     base: "",
+    //     slug: "politico",
+    // },
 ];
 
 const keywords = [
-    "amendment", "biden", "ballot", " bill ", "congress", "capitol", "capitol hill", "constitution", " dems ", "democrats", "election", "filibuster", " gop ", "house floor", "house of representatives", "investing", " law ", "majority leader", "midterms", "midterm elections", "minority leader", "nuclear war", "obama", "omnibus", "pelosi", "republicans", "runoff election", "senate", "senate floor", "speaker of the house", "stock", "tax", "trump", "us congress", "vote", "war in", "washington dc", "white house"
-];
+    "amendment", "biden", "trump", "ballot", " bill ", "civil war", "committee", "congress", "capitol", "capitol hill", "constitution", " dems ", "democrats", "general election", "election", "filibuster", "financial services", " gop ", "house floor", "house of representatives", "impeach", "investing", "labor market", " law ", "majority leader", "mike johnson", "midterms", "midterm election", "minority leader", "nuclear war", "omnibus", "press secretary", " primaries ", "republicans", "runoff election", "senate", "senate floor", "speaker of the house", "stock", "tax", "unemployment", "us congress", "vote", "war in", "washington dc", "whistleblower", "white house"
+];;
 
 const storyList = [];
 
@@ -87,7 +87,9 @@ async function getNews() {
                     }
                 });
             });
-        } else if (publisher.slug == "usatoday") {
+        }
+        ///
+        else if (publisher.slug == "usatoday") {
             console.log(publisher.name);
             await axios.get(publisher.address).then((response) => {
                 const html = response.data;
@@ -119,7 +121,9 @@ async function getNews() {
                     }
                 });
             });
-        } else if (publisher.slug == "propublica") {
+        }
+        ///
+        else if (publisher.slug == "propublica") {
             console.log(publisher.name);
             await axios.get(publisher.address).then((response) => {
                 const html = response.data;
@@ -162,7 +166,9 @@ async function getNews() {
                     }
                 });
             });
-        } else if (publisher.slug == "thewashingtonpost") {
+        }
+        ///
+        else if (publisher.slug == "thewashingtonpost") {
             console.log(publisher.name);
             await axios.get(publisher.address).then((response) => {
                 const html = response.data;
@@ -207,7 +213,9 @@ async function getNews() {
                     }
                 });
             });
-        } else if (publisher.slug == "nytimes") {
+        }
+        ///
+        else if (publisher.slug == "nytimes") {
             console.log(publisher.name);
             await axios.get(publisher.address).then((response) => {
                 const html = response.data;
@@ -247,7 +255,9 @@ async function getNews() {
                     }
                 });
             });
-        } else if (publisher.slug == "wsj") {
+        }
+        ///
+        else if (publisher.slug == "wsj") {
             console.log(publisher.name);
             await axios.get(publisher.address).then((response) => {
                 const html = response.data;
@@ -281,7 +291,9 @@ async function getNews() {
                     }
                 });
             });
-        } else if (publisher.slug == "politico") {
+        }
+        ///
+        else if (publisher.slug == "politico") {
             console.log(publisher.name);
             await axios.get(publisher.address).then((response) => {
                 const html = response.data;
@@ -324,15 +336,17 @@ async function getNews() {
 }
 
 getNews(publishers).then(() => {
-    fs.writeFile(
-        "top_congressional_news.json",
-        JSON.stringify(storyList),
-        (err) => {
-            if (err) {
-                console.log(err);
+    try {
+        fs.writeFile(
+            "top_congressional_news.json",
+            JSON.stringify(storyList),
+            (err) => {
+                if (err) {
+                    console.log(err);
+                }
             }
-        }
-    );
+        );
+    } catch (e) { console.log("[[               ]] HERE IS THE ERROR" + e) }
 });
 
 
