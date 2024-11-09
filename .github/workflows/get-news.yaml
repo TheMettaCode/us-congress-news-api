@@ -17,8 +17,9 @@ permissions:
 jobs:
   save_json_file:
     runs-on: ubuntu-latest
+    name: A job to retrieve political news
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: node --version
       - run: npm install axios
       - run: npm install cheerio
