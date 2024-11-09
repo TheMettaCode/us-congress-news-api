@@ -3,24 +3,24 @@ const cheerio = require("cheerio");
 const fs = require("fs");
 
 const publishers = [
-    {
-        name: "AP News",
-        address: "https://apnews.com/hub/politics",
-        base: "https://www.apnews.com",
-        slug: "apnews",
-    },
-    {
-        name: "USA Today",
-        address: "https://www.usatoday.com/news/politics/",
-        base: "https://www.usatoday.com",
-        slug: "usatoday",
-    },
-    {
-        name: "Propublica",
-        address: "https://www.propublica.org/",
-        base: "",
-        slug: "propublica",
-    },
+    // {
+    //     name: "AP News",
+    //     address: "https://apnews.com/hub/politics",
+    //     base: "https://www.apnews.com",
+    //     slug: "apnews",
+    // },
+    // {
+    //     name: "USA Today",
+    //     address: "https://www.usatoday.com/news/politics/",
+    //     base: "https://www.usatoday.com",
+    //     slug: "usatoday",
+    // },
+    // {
+    //     name: "Propublica",
+    //     address: "https://www.propublica.org/",
+    //     base: "",
+    //     slug: "propublica",
+    // },
     // {
     //   name: 'The Washington Post',
     //   address: 'https://www.washingtonpost.com/politics/',
