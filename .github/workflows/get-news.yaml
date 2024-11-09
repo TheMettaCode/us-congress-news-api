@@ -22,13 +22,13 @@ jobs:
         version: [10, 12, 14, 20]
     steps:
       - uses: actions/checkout@v4
+        with:
+          node-version: ${{ matrix.version }}
       - run: node --version
       - run: npm install axios
       - run: npm install cheerio
       - name: run-javascript
         run: npm run get-news
-          with:
-            node-version: ${{ matrix.version }}
       - name: commit-top-news-json
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
