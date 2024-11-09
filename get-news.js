@@ -9,18 +9,18 @@ const publishers = [
     //     base: "https://www.apnews.com",
     //     slug: "apnews",
     // },
-    // {
-    //     name: "USA Today",
-    //     address: "https://www.usatoday.com/news/politics/",
-    //     base: "https://www.usatoday.com",
-    //     slug: "usatoday",
-    // },
-    // {
-    //     name: "Propublica",
-    //     address: "https://www.propublica.org/",
-    //     base: "",
-    //     slug: "propublica",
-    // },
+    {
+        name: "USA Today",
+        address: "https://www.usatoday.com/news/politics/",
+        base: "https://www.usatoday.com",
+        slug: "usatoday",
+    },
+    {
+        name: "Propublica",
+        address: "https://www.propublica.org/",
+        base: "",
+        slug: "propublica",
+    },
     // {
     //   name: 'The Washington Post',
     //   address: 'https://www.washingtonpost.com/politics/',
