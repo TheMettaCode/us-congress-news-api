@@ -18,12 +18,8 @@ jobs:
   save_json_file:
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        version: [20, 12, 0]
     steps:
       - uses: actions/checkout@v4
-        with:
-          node-version: ${{ matrix.version }}
       - run: node --version
       - run: npm install axios
       - run: npm install cheerio
